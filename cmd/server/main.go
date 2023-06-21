@@ -6,6 +6,7 @@ import (
 	"net"
 	"os"
 
+	"grpc-demo/api"
 	"grpc-demo/proto/dog"
 	"grpc-demo/service"
 
@@ -27,7 +28,9 @@ func main() {
 
 	s := grpc.NewServer()
 
-	dogService := &service.DogService{}
+	dogService := &service.DogService{
+		Api: &api.API{},
+	}
 
 	dog.RegisterDogServiceServer(s, dogService)
 

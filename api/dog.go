@@ -12,7 +12,14 @@ const (
 	URL = "https://dog.ceo/api/breed"
 )
 
-func GetDog(breed string) (*dog.DogResponse, error) {
+type IApi interface {
+	GetDog(breed string) (*dog.DogResponse, error)
+}
+
+type API struct {
+}
+
+func (a *API) GetDog(breed string) (*dog.DogResponse, error) {
 
 	client := &http.Client{}
 
