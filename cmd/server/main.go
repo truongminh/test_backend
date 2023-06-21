@@ -1,28 +1,16 @@
 package main
 
 import (
-	"context"
 	"fmt"
 	"log"
 	"net"
 	"os"
 
-	"grpc-demo/api"
 	"grpc-demo/proto/dog"
+	"grpc-demo/service"
 
 	"google.golang.org/grpc"
 )
-
-type server struct {
-	dog.UnimplementedDogServiceServer
-}
-
-func (s *server) GetDog(ctx context.Context, req *dog.DogRequest) (*dog.DogResponse, error) {
-
-	fmt.Println("breed:", req.Breed)
-
-	return api.GetDog(req.Breed)
-}
 
 func main() {
 
@@ -38,7 +26,10 @@ func main() {
 	}
 
 	s := grpc.NewServer()
-	dog.RegisterDogServiceServer(s, &server{})
+
+	dogService := &service.DogService{}
+
+	dog.RegisterDogServiceServer(s, dogService)
 
 	log.Println("Starting gRPC server port:", port)
 	if err := s.Serve(lis); err != nil {
