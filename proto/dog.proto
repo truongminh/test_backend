@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package dog;
+
+option go_package = "proto/dog";
+
+message DogRequest {
+  string breed = 1;
+}
+
+message DogResponse {
+  bytes image_data = 1;
+}
+
+service DogService {
+  rpc GetDog(DogRequest) returns (DogResponse) {}
+}

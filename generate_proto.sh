@@ -1,0 +1,1 @@
+protoc -I $(pwd) --go_out=. --go-grpc_out=. $(pwd)/proto/*.proto
