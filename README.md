@@ -7,6 +7,7 @@ Compile the programs: `sh build.sh`
 The executables are written in `./dist`
 
 Open one terminal: `./dist/server`
+
 On another terminal: `./dist/client -breed boxer -output ./boxer.jpg`
 
 ## Architecture
