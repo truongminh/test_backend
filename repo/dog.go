@@ -1,4 +1,4 @@
-package api
+package repo
 
 import (
 	"encoding/json"
@@ -12,14 +12,14 @@ const (
 	URL = "https://dog.ceo/api/breed"
 )
 
-type IApi interface {
+type IDogRepo interface {
 	GetDog(breed string) (*dog.DogResponse, error)
 }
 
-type API struct {
+type DogRepo struct {
 }
 
-func (a *API) GetDog(breed string) (*dog.DogResponse, error) {
+func (a *DogRepo) GetDog(breed string) (*dog.DogResponse, error) {
 
 	client := &http.Client{}
 

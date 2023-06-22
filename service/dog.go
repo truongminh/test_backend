@@ -3,18 +3,18 @@ package service
 import (
 	"context"
 	"fmt"
-	"grpc-demo/api"
 	"grpc-demo/proto/dog"
+	"grpc-demo/repo"
 )
 
 type DogService struct {
 	dog.UnimplementedDogServiceServer
-	Api api.IApi
+	Repo repo.IDogRepo
 }
 
 func (s *DogService) GetDog(ctx context.Context, req *dog.DogRequest) (*dog.DogResponse, error) {
 
 	fmt.Println("breed:", req.Breed)
 
-	return s.Api.GetDog(req.Breed)
+	return s.Repo.GetDog(req.Breed)
 }

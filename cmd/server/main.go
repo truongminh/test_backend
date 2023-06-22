@@ -6,8 +6,8 @@ import (
 	"net"
 	"os"
 
-	"grpc-demo/api"
 	"grpc-demo/proto/dog"
+	"grpc-demo/repo"
 	"grpc-demo/service"
 
 	"google.golang.org/grpc"
@@ -29,7 +29,7 @@ func main() {
 	s := grpc.NewServer()
 
 	dogService := &service.DogService{
-		Api: &api.API{},
+		Repo: &repo.DogRepo{},
 	}
 
 	dog.RegisterDogServiceServer(s, dogService)

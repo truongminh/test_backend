@@ -1,4 +1,4 @@
-package api
+package repo
 
 import (
 	"grpc-demo/proto/dog"
@@ -6,11 +6,11 @@ import (
 	"github.com/stretchr/testify/mock"
 )
 
-type APIMock struct {
+type DogRepoMock struct {
 	mock.Mock
 }
 
-func (a *APIMock) GetDog(breed string) (*dog.DogResponse, error) {
+func (a *DogRepoMock) GetDog(breed string) (*dog.DogResponse, error) {
 	args := a.Called(breed)
 	return args.Get(0).(*dog.DogResponse), args.Error(1)
 
