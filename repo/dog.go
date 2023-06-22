@@ -47,6 +47,10 @@ func (a *DogRepo) GetDog(breed string) (*dog.DogResponse, error) {
 		return nil, err
 	}
 
+	if result.Status != "success" {
+		return nil, fmt.Errorf("request dog breed error: %s", result.Message)
+	}
+
 	resp, err = http.Get(result.Message)
 	if err != nil {
 		fmt.Println("request image error:", err)
