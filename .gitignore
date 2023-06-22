@@ -21,3 +21,6 @@
 go.work
 
 .DS_store
+
+/dist
+/image/*.jpg

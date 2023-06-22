@@ -1,11 +1,13 @@
 # gRPC backend test
 A sample application using gRPC for client-server communicaiton.
 
-## How to run:
-The server:
-- `cd ./cmd/server/; go run .`
-The client:
-- `cd ./cmd/client/; go run . -breed boxer -output breed.jpg`
+## Try it
+Compile the programs: `sh build.sh`
+
+The executables are written in `./dist`
+
+Open one terminal: `./dist/server`
+On another terminal: `./dist/client -breed boxer -output ./boxer.jpg`
 
 ## Architecture
 ![alt architecture](architecture.png "Architecture")
@@ -17,9 +19,15 @@ There are three layers:
 
 ## Development
 tldr; `sh setup.sh`
-All steps:
+
+Setup `protoc` and `gRPC` for Go:
 - Install Go compiler
 - Install protobuf compiler (protoc)
 - Install go language binding for protobuf
 - Install go rRPC server scaffolder 
 
+Run the server:
+- `cd ./cmd/server/; go run .`
+
+Run the client:
+- `cd ./cmd/client/; go run . -breed boxer -output breed.jpg`
